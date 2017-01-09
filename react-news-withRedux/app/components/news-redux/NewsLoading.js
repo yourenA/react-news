@@ -10,7 +10,6 @@ var NewsLoading=React.createClass({
      */
     handleClick:function (page) {
         page=page+1;
-        this.props.changeLoading();
         this.props.changePage(page);
     },
     render:function () {

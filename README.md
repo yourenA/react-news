@@ -3,7 +3,7 @@
 
 在react-news-withoutRedux是单纯使用react进行编写
 
-在react-news=withRedux是使用react+redux进行编写
+在react-news-withRedux是使用react+redux进行编写
 
 运行过程
 

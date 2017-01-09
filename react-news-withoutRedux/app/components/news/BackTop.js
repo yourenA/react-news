@@ -37,6 +37,7 @@ var NewsLoading=React.createClass({
         if(this.state.showScroll){
             scrollTopFlag='block';
         }
+        console.log(scrollTopFlag)
         return(
             <div className="BackTop" style={{display:scrollTopFlag}} onClick={this.handleScrollTopClick}>
             </div>

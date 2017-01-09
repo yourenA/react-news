@@ -2,7 +2,7 @@
  * @author 戴家儒 2016/10/24.
  */
 var React=require('react');
-import { loadingNews } from "./action/NewsActions";
+import { loadingNews,changeSorts } from "./action/NewsActions";
 import { connect } from "react-redux";
 var NewsTop=require('./NewsTop');
 var NewsSorts=require('./NewsSorts');
@@ -16,27 +16,12 @@ var BackTop=require('./BackTop');
  */
 var News=React.createClass({
     /**
-     *@function
-     * getInitialState 初始化状态
-     * @return {object}
-     * @property {number}  newsSorts              - 新闻类型.
-     * @property {bool}    loading                - 是否显示加载组件.
-     * @property {number}  page                   - 当前新闻加载的页数.
-     * @property {array}   data                   - 通过ajax获取的新闻对象数组.
-     * */
-    getInitialState:function(){
-        return{
-            newsSorts:1,
-            page:1,
-            loading:true
-        };
-    },
-    /**
      * @function componentDidMount
      * 组件挂载完成
      */
     componentDidMount:function () {
-        this.props.dispatch( loadingNews(1,1) );
+        const { news } = this.props;
+        this.props.dispatch( loadingNews(news.newsSorts,news.page) );
     },
 
     /**
@@ -45,9 +30,6 @@ var News=React.createClass({
      * @param {number} sort     - 新闻类型.
      */
     changeSorts:function (sort) {
-        this.setState({
-            newsSorts:sort
-        });
         this.props.dispatch( loadingNews(sort,1) );
 
     },
@@ -58,10 +40,8 @@ var News=React.createClass({
      * @param {number} page   - 新闻页数.
      */
     changePage:function (page) {
-        this.setState({
-            page:page
-        });
-        this.props.dispatch( loadingNews(this.state.newsSorts,page) );
+        const { news } = this.props;
+        this.props.dispatch( loadingNews(news.newsSorts,page) );
 
     },
 
@@ -75,25 +55,16 @@ var News=React.createClass({
         });
     },
 
-    /**
-     * @function LoadingNews
-     * 根据新闻类型和页数加载不同新闻
-     * @param {number} sort     - 新闻类型
-     * @param {number} page     - 新闻页数
-     */
-    LoadingNews:function (sort,page) {
-    },
     render:function () {
         const { news } = this.props;
-
         return(
             <div>
                 <NewsTop title='新闻列表'/>
-                <NewsSorts sort={this.state.newsSorts} changeSorts={this.changeSorts}/>
-                {/*<Loading loading={this.state.loading}/>*/}
-                <NewsList  sort={this.state.newsSorts} data={news.data} />
-                <NewsLoading changeLoading={this.changeLoading} changePage={this.changePage} page={this.state.page}/>
-                {/*<BackTop />*/}
+                <NewsSorts sort={news.newsSorts} changeSorts={this.changeSorts}/>
+                <Loading loading={news.loading}/>
+                <NewsList  sort={news.newsSorts} data={news.data} />
+                <NewsLoading changeLoading={this.changeLoading} changePage={this.changePage} page={news.page}/>
+                <BackTop />
             </div>
         );
     }
