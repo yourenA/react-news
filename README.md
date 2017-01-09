@@ -12,7 +12,7 @@
 5. 在浏览器打开 http://localhost:9090/ 端口
 
 头条新闻列表
-![image](https://github.com/yourenA/react-news/imgs/1.png)
+![image](/imgs/1.png)
 
 娱乐新闻列表
-![image](https://github.com/yourenA/react-news/imgs/2.png)
+![image](/imgs/2.png)
