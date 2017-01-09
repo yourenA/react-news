@@ -21,7 +21,7 @@ var NewsZhengwen=React.createClass({
         });
     },
     componentDidMount:function () {
-        var params=this.GetQueryString('news_id');
+        var params = this.props.params.articleId;
         var content=sessionStorage.getItem(params);
         var title=sessionStorage.getItem(params+'_title');
         this.refs.content.innerHTML='<p class="title">'+title+'</p>'+content;
@@ -58,26 +58,12 @@ var NewsZhengwen=React.createClass({
         }.bind(this));
 
     },
-    /**
-     * @function GetQueryString
-     * 改变显示新闻的类型
-     * @param {string} name     - 需要在URL上查找的参数.
-     * @return {string}  - 在地址栏上获得的值
-     */
-    GetQueryString:function (name)
-    {
-        var reg = new RegExp('(^|&)'+ name +'=([^&]*)(&|$)');
-        var r = window.location.search.substr(1).match(reg);
-        if(r!=null){
-            return  unescape(r[2]);
-        }
-    },
     handleBack:function () {
         history.back();
     },
     render:function () {
         return(
-            <div>
+            <div id="newsZhengwen">
                 <NewsTop title="新闻正文">
                     <span className="left" onClick={this.handleBack}></span>
                 </NewsTop>

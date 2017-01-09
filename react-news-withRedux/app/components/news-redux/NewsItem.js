@@ -2,11 +2,11 @@
  * Created by Administrator on 2016/10/26.
  */
 var React=require('react');
+import {Link} from 'react-router'
 var NewsItem=React.createClass({
     handleAClick:function(news_id,content,title){
         sessionStorage.setItem(news_id, content);
         sessionStorage.setItem(news_id+'_title', title);
-        console.log('title',title)
     },
     render:function () {
 
@@ -34,8 +34,8 @@ var NewsItem=React.createClass({
                 return (
                     <li className="item">
                         <div className="item_left2">
-                            <p className="title"><a
-                                onClick={this.handleAClick.bind(this, news_id, content, title)}>{title}</a></p>
+                            <p className="title"><Link to ={`/article/${news_id}`}
+                                onClick={this.handleAClick.bind(this, news_id, content, title)}>{title}</Link></p>
                         </div>
                         <div className="item_bottom_pic">
                             <img className="three_pic" src={top_image} alt=""/>
@@ -50,7 +50,7 @@ var NewsItem=React.createClass({
                 return(
                     <li className="item">
                         <div className="item_left">
-                            <p className="title"><a  onClick={this.handleAClick.bind(this,news_id,content,title)}>{title}</a></p>
+                            <p className="title"><Link to ={`/article/${news_id}`}  onClick={this.handleAClick.bind(this,news_id,content,title)}>{title}</Link></p>
                             <p className="item_bottom"><span className="source">{source}</span><span className="edit_time">{date}</span></p>
                         </div>
                         <div className="item_right">
@@ -76,7 +76,7 @@ var NewsItem=React.createClass({
             return(
                 <li className="item">
                     <div className="item_left">
-                        <p className="title"><a  onClick={this.handleAClick.bind(this,news_id,content,title)}>{title}</a></p>
+                        <p className="title"><Link  to ={`/article/${news_id}`} onClick={this.handleAClick.bind(this,news_id,content,title)}>{title}</Link></p>
                         <p className="item_bottom"><span className="source">{source}</span><span className="edit_time">{date}</span></p>
                     </div>
                     <div className="item_right">
