@@ -22,7 +22,7 @@ var NewsItem=React.createClass({
         var d = new Date(timestamp * 1000);    //根据时间戳生成的时间对象
         var date = (d.getFullYear()) + '-' +
             (d.getMonth() + 1) + '-' +
-            (d.getDate()>10?d.getDate():'0'+d.getDate()) + ' ' +
+            (d.getDate()>=10?d.getDate():'0'+d.getDate()) + ' ' +
             (d.getHours()>=10?d.getHours():'0'+d.getHours()) + ':' +
             (d.getMinutes()>=10?d.getMinutes():'0'+d.getMinutes()) + ':' +
             (d.getSeconds()>=10?d.getSeconds():'0'+d.getSeconds());

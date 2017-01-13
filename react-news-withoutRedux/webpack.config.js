@@ -4,14 +4,15 @@
 var path = require('path');
 var webpack = require('webpack');
 module.exports = {
+    devtool: 'eval-source-map',
     /*entry: ['webpack/hot/dev-server', path.resolve(__dirname, './app/main.js')],*/
     entry: {
-        index:'webpack/hot/dev-server',
         news: "./app/news.js"
     },
     output: {
         path: path.resolve(__dirname, './build'),
-        filename: '[name].js'
+        filename: '[name].js',
+        publicPath: '/assets/'
     },
     module: {
         loaders: [
@@ -36,6 +37,6 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
     ]
 };
