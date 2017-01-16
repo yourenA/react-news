@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --devtool eval --progress  --colors  --port 9090 --content-base build"
+    "dev": "webpack-dev-server --inline --hot  --colors  --port 9090 --content-base build"
   },
   "keywords": [
     "react"

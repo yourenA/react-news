@@ -59,7 +59,7 @@ var News=React.createClass({
         const { news } = this.props;
         return(
             <div>
-                <NewsTop title='新闻列表'/>
+                <NewsTop title='新闻列表2'/>
                 <NewsSorts sort={news.newsSorts} changeSorts={this.changeSorts}/>
                 <Loading loading={news.loading}/>
                 <NewsList  sort={news.newsSorts} data={news.data} />
